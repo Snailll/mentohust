@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="router setting">
+        <EditTextPreference
+            android:key="server_ip"
+            android:title="Server ip"
+            android:defaultValue="192.168.11.1"
+            />
+        <EditTextPreference
+            android:key="server_username"
+            android:title="Username"
+            android:defaultValue="root"
+            />
+        <EditTextPreference
+            android:key="server_password"
+            android:title="Password"
+            android:defaultValue="joinyoung"
+            android:password="true"
+            android:inputType="textPassword"
+            />
+    </PreferenceCategory>
+    <CheckBoxPreference
+        android:title="启用Mentohust参数配置"
+        android:summary="建议在第一次运行时启用"
+        android:key="mentohust_enable"
+        android:defaultValue="false"
+        ></CheckBoxPreference>
+    <PreferenceCategory
+        android:key="mentohust_config"
+        android:title="mentohust setting"
+        android:enabled="false"
+        android:selectable="true"
+        android:shouldDisableView="false">
+
+        <EditTextPreference
+            android:key="mentohust_u"
+            android:title="Username"
+            android:defaultValue="0"
+            />
+        <EditTextPreference
+            android:key="mentohust_p"
+            android:title="Password"
+            android:defaultValue="0"
+            android:password="true"
+            android:inputType="textPassword"
+            />
+        <EditTextPreference
+            android:key="mentohust_v"
+            android:title="Version"
+            android:defaultValue="4.85"
+            />
+        <EditTextPreference
+            android:key="mentohust_n"
+            android:title="Etnernet"
+            android:defaultValue="eth0"
+            />
+        <ListPreference
+            android:title="组播地址"
+            android:key="mentohust_a"
+            android:defaultValue="1"
+            android:entries="@array/entries_a"
+            android:entryValues="@array/entries_a_values"
+            />
+        <ListPreference
+            android:title="DHCP方式"
+            android:key="mentohust_d"
+            android:defaultValue="1"
+            android:entries="@array/entries_d"
+            android:entryValues="@array/entries_d_values" />
+        <ListPreference
+            android:title="是否后台运行"
+            android:key="mentohust_b"
+            android:defaultValue="2"
+            android:entries="@array/entries_b"
+            android:entryValues="@array/entries_b_values" />
+        <CheckBoxPreference
+            android:title="是否写入配置文件"
+            android:key="mentohust_w"
+            android:defaultValue="false"
+            ></CheckBoxPreference>
+
+        orion-ssh2-214.jar
+
+    </PreferenceCategory>
+</PreferenceScreen> 
