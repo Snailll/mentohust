@@ -65,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
 
         nm = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
         n = new Notification();
-        n.icon = R.drawable.ic_launcher;
+        n.icon = R.drawable.wifi_router;
         n.tickerText = "Mentohust Running";
         n.when = System.currentTimeMillis();
         n.flags = Notification.FLAG_NO_CLEAR;
@@ -108,9 +108,6 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void run() {
                         execute(sb.toString());
-                        System.out.print("why cannot exit????");
-
-
                     }
                 }).start();
             }
