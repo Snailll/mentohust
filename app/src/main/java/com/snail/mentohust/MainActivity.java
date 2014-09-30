@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
@@ -52,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         getInfo();
-        Toast.makeText(this, S_IP + S_Uname + S_Pwd, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, S_IP + S_Uname + S_Pwd, Toast.LENGTH_LONG).show();
     }
 
 
@@ -269,8 +270,12 @@ public class MainActivity extends ActionBarActivity {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                Intent intent = new Intent(MainActivity.this,MainActivity.class);
-                                PendingIntent pi = PendingIntent.getActivity(MainActivity.this,0,intent,0);
+                                PackageManager pm = MainActivity.this.getPackageManager();
+                                Intent notificationIntent = pm.getLaunchIntentForPackage(MainActivity.this.getPackageName());
+                                notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                notificationIntent.setAction(Intent.ACTION_MAIN);
+                                notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                                PendingIntent pi = PendingIntent.getActivity(MainActivity.this, 0, notificationIntent, 0);
                                 n.setLatestEventInfo(MainActivity.this,"Mentohust","Mentohust is running",pi);
                                 nm.notify(ID,n);
                                 Toast.makeText(MainActivity.this,"Mentohust认证成功",Toast.LENGTH_LONG).show();
@@ -290,6 +295,14 @@ public class MainActivity extends ActionBarActivity {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
+                                PackageManager pm = MainActivity.this.getPackageManager();
+                                Intent notificationIntent = pm.getLaunchIntentForPackage(MainActivity.this.getPackageName());
+                                notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                notificationIntent.setAction(Intent.ACTION_MAIN);
+                                notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                                PendingIntent pi = PendingIntent.getActivity(MainActivity.this, 0, notificationIntent, 0);
+                                n.setLatestEventInfo(MainActivity.this,"Mentohust","Mentohust is running",pi);
+                                nm.notify(ID,n);
                                 Toast.makeText(MainActivity.this,"Mentohust已经运行",Toast.LENGTH_LONG).show();
                             }
                         });
